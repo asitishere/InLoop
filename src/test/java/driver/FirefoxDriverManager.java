@@ -14,5 +14,19 @@ public class FirefoxDriverManager extends SeleniumDriverManager {
             capabilities.setCapability("marionette", true);
             setDriver(new FirefoxDriver(capabilities));
         }
+
+        if (OsUtils.getOperatingSystemName().contains("nix")) {
+            System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "//browserExecutors/firefox/geckodriver_linux");
+            DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+            capabilities.setCapability("marionette", true);
+            setDriver(new FirefoxDriver(capabilities));
+        }
+
+        if (OsUtils.getOperatingSystemName().contains("win")) {
+                System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "//browserExecutors/firefox/geckodriver.exe");
+                DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                capabilities.setCapability("marionette", true);
+                setDriver(new FirefoxDriver(capabilities));
+        }
     }
 }

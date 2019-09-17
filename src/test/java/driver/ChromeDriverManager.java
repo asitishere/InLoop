@@ -12,7 +12,16 @@ public class ChromeDriverManager extends SeleniumDriverManager {
         }
 
         //TODO: Need to set for Windows
-    }
+        if (OsUtils.getOperatingSystemName().contains("nix")){
+            System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/browserExecutors/chrome/chromedriver_linux");
+            setDriver(new ChromeDriver());
+        }
+
+        if (OsUtils.getOperatingSystemName().contains("win")) {
+                System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"/browserExecutors/chrome/chromedriver.exe");
+                setDriver(new ChromeDriver());
+            }
+        }
 
 
 }
